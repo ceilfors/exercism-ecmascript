@@ -4,7 +4,7 @@
 //
 
 class Bob {
-  hey(message) {
+  hey (message) {
     if (message.toUpperCase() === message) {
       return 'Whoa, chill out!'
     } else if (message.endsWith('?')) {
@@ -14,5 +14,4 @@ class Bob {
   }
 }
 
-export default Bob;
-
+export default Bob
