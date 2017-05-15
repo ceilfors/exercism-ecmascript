@@ -5,12 +5,15 @@
 
 class Bob {
   hey (message) {
-    if (message.toUpperCase() === message) {
+    if (message.trim().length === 0) {
+      return 'Fine. Be that way!'
+    } else if (message.match(/[a-z]/i) && message.toUpperCase() === message) {
       return 'Whoa, chill out!'
     } else if (message.endsWith('?')) {
       return 'Sure.'
+    } else {
+      return 'Whatever.'
     }
-    return 'Whatever.'
   }
 }
 
