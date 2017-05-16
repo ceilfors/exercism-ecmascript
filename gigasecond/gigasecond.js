@@ -1,10 +1,12 @@
+const gigasecond = 1000000000
+
 class Gigasecond {
   constructor (date) {
     this._date = date
   }
 
   date () {
-    return new Date(Date.UTC(2047, 4, 23, 1, 46, 40))
+    return new Date(+this._date + gigasecond * 1000)
   }
 }
 
