@@ -1,4 +1,4 @@
-const gigasecond = 1000000000
+const gigasecond = 10 ** 9
 
 class Gigasecond {
   constructor (date) {
