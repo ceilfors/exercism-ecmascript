@@ -1,7 +1,7 @@
 class PerfectNumbers {
   classify (number) {
     if (number <= 0) throw Error('Classification is only possible for natural numbers.')
-    const divisors = this.getDivisors(number)
+    const divisors = this.getFactors(number)
     const sum = divisors.reduce((a, b) => a + b, 0)
     return this.classifyNumber(number, sum)
   }
@@ -16,14 +16,10 @@ class PerfectNumbers {
     }
   }
 
-  getDivisors (number) {
-    const divisors = []
-    for (let i = 1; i < number; i++) {
-      if (number % i === 0) {
-        divisors.push(i)
-      }
-    }
-    return divisors
+  getFactors (number) {
+    return [...Array(Math.floor(number / 2) + 1).keys()]
+              .slice(1)
+              .filter(i => number % i === 0)
   }
 }
 
