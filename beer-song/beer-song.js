@@ -1,39 +1,39 @@
 const eol = require('os').EOL
 
-function sing (start = 99, end = 0) {
-  let verses = ''
-  for (let i = start; i >= end; i--) {
-    verses += `${verse(i)}`
-    if (i !== end) {
-      verses += eol
-    }
-  }
-  return verses
-}
+const capitalize = ([first, ...rest]) =>
+  first.toUpperCase() + rest.join('')
 
-function capitalize (string) {
-  return string.charAt(0).toUpperCase() + string.slice(1)
-}
-
-function verse (n) {
-  return `${capitalize(beerBottles(n))} of beer on the wall, ${beerBottles(n)} of beer.
-${act(n)}, ${beerBottles(n - 1)} of beer on the wall.
-`
-}
-
-function beerBottles (n) {
-  const quantity = n === 0 ? 'no more' : n === -1 ? 99 : n
+const beerBottlesPhrase = (n, wall = false) => {
+  const quantity = n === 0 ? 'no more' : n
   const word = n === 1 ? 'bottle' : 'bottles'
-  return `${quantity} ${word}`
+  const wallPhrase = wall ? ' on the wall' : ''
+  return `${quantity} ${word} of beer${wallPhrase}`
 }
 
-function act (n) {
-  if (n === 0) {
-    return 'Go to the store and buy some more'
-  } else {
-    const taken = n - 1 === 0 ? 'it' : 'one'
-    return `Take ${taken} down and pass it around`
+const takeActionPhrase = (n) => {
+  let phrases = {
+    0: _ => 'Go to the store and buy some more',
+    1: _ => 'Take it down and pass it around',
+    2: n => 'Take one down and pass it around'
   }
+  return phrases[Math.min(n, 2)](n)
 }
 
-export default { verse: verse, sing: sing }
+const firstLine = (n) =>
+  `${capitalize(beerBottlesPhrase(n, true))}, ${beerBottlesPhrase(n)}.`
+
+const secondLine = (n) =>
+  `${takeActionPhrase(n)}, ${beerBottlesPhrase(n - 1 < 0 ? 99 : n - 1, true)}.`
+
+const verse = (n) =>
+  firstLine(n) + eol + secondLine(n) + eol
+
+const sing = (start = 99, end = 0) => {
+  let verses = []
+  for (let i = start; i >= end; i--) {
+    verses.push(`${verse(i)}`)
+  }
+  return verses.join(eol)
+}
+
+export default { verse, sing }
