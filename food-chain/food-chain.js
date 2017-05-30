@@ -1,6 +1,12 @@
 const eol = require('os').EOL
+const range = (start, end) => [...Array(end - start + 1)].map((_, i) => start + i)
 
 const foodChains = [
+  {
+    animal: 'horse',
+    verseMiddle: "She's dead, of course!",
+    verseEnd: ''
+  },
   {
     animal: 'cow',
     verseMiddle: `I don't know how she swallowed a cow!`,
@@ -40,14 +46,12 @@ const foodChains = [
 
 const getVerse = (chain) => {
   const startIndex = foodChains.length - chain
-  const verseStart = `I know an old lady who swallowed a ${foodChains[startIndex].animal}.`
+  const animal = foodChains[startIndex].animal
+  const verseStart = `I know an old lady who swallowed a ${animal}.`
   const verseMiddle = foodChains[startIndex].verseMiddle
   const verseEnd = foodChains
-    .slice(startIndex, foodChains.length)
-    .reduce((arr, verse) => {
-      arr.push(verse.verseEnd)
-      return arr
-    }, [])
+    .slice(startIndex, animal === 'horse' ? startIndex + 1 : foodChains.length)
+    .map(foodChain => foodChain.verseEnd)
   return [verseStart, verseMiddle, ...verseEnd]
     .filter(part => part.length !== 0)
     .join(eol) + eol
@@ -56,6 +60,10 @@ const getVerse = (chain) => {
 class Song {
   verse (chain) {
     return getVerse(chain)
+  }
+
+  verses (start, end) {
+    return range(start, end).map(chain => getVerse(chain)).join(eol) + eol
   }
 }
 

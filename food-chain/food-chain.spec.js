@@ -92,7 +92,7 @@ I don't know why she swallowed the fly. Perhaps she'll die.
     expect(song.verse(7)).toEqual(expected)
   })
 
-  xit('horse', () => {
+  it('horse', () => {
     const expected = `I know an old lady who swallowed a horse.
 She's dead, of course!
 `
@@ -100,7 +100,7 @@ She's dead, of course!
     expect(song.verse(8)).toEqual(expected)
   })
 
-  xit('multiple verses', () => {
+  it('multiple verses', () => {
     const expected = `I know an old lady who swallowed a fly.
 I don't know why she swallowed the fly. Perhaps she'll die.
 
@@ -114,7 +114,7 @@ I don't know why she swallowed the fly. Perhaps she'll die.
     expect(song.verses(1, 2)).toEqual(expected)
   })
 
-  xit('the whole song', () => {
+  it('the whole song', () => {
     const expected = `I know an old lady who swallowed a fly.
 I don't know why she swallowed the fly. Perhaps she'll die.
 
