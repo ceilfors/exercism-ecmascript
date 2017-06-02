@@ -71,7 +71,7 @@ describe('Robot', () => {
   })
 
   // This test is optional.
-  xit('there can be lots of robots with different names each', () => {
+  it('there can be lots of robots with different names each', () => {
     const NUMBER_OF_ROBOTS = 10000
     const usedNames = new Set()
 
