@@ -1,4 +1,4 @@
-const triangleType = {
+const triangleTypes = {
   1: 'equilateral',
   2: 'isosceles',
   3: 'scalene'
@@ -28,8 +28,7 @@ class Triangle {
   kind () {
     this.validateLength()
     this.validateInequality()
-    const set = this.sides.reduce((set, side) => { set.add(side); return set }, new Set())
-    return triangleType[set.size]
+    return triangleTypes[new Set(this.sides).size]
   }
 }
 
