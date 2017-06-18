@@ -24,5 +24,5 @@ describe('primeFactors', () => {
 
   it('factors 901255', () => expect(primeFactors.for(901255)).toEqual([5, 17, 23, 461]))
 
-  xit('factors 93819012551', () => expect(primeFactors.for(93819012551)).toEqual([11, 9539, 894119]))
+  it('factors 93819012551', () => expect(primeFactors.for(93819012551)).toEqual([11, 9539, 894119]))
 })

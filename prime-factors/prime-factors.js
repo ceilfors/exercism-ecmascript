@@ -1,10 +1,15 @@
-const range = (start, end) => [...Array(end - start + 1)].map((_, i) => start + i)
+const findSmallestFactor = (num) => {
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) return i
+  }
+  return num
+}
 
 const getFactors = (num, primeFactors) => {
   if (num === 1) {
     return primeFactors
   }
-  const smallestFactor = range(2, num).find(factor => num % factor === 0)
+  const smallestFactor = findSmallestFactor(num)
   primeFactors.push(smallestFactor)
   return getFactors(num / smallestFactor, primeFactors)
 }
