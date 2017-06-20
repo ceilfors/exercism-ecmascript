@@ -1,14 +1,16 @@
+const raindropSounds = [
+  [3, 'Pling'],
+  [5, 'Plang'],
+  [7, 'Plong']
+]
+
 class Raindrops {
   convert (num) {
-    if (num % 3 === 0) {
-      return 'Pling'
-    } else if (num % 5 === 0) {
-      return 'Plang'
-    } else if (num % 7 === 0) {
-      return 'Plong'
-    } else {
-      return num.toString()
-    }
+    const raindrops = raindropSounds
+      .filter(raindropSound => num % raindropSound[0] === 0)
+      .map(raindropSound => raindropSound[1])
+
+    return raindrops.length ? raindrops.join('') : num.toString()
   }
 }
 
