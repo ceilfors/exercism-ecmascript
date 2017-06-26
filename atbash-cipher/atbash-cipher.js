@@ -27,9 +27,14 @@ const mapping = {
   z: 'a'
 }
 
+const cipher = (letter) => {
+  return mapping.hasOwnProperty(letter.toLowerCase()) ? mapping[letter.toLowerCase()] : letter
+}
+
 const encode = (input) => {
-  return input.split('')
-    .map(a => mapping[a.toLowerCase()])
+  return input.replace(/[^A-Za-z0-9]/g, '')
+    .split('')
+    .map(cipher)
     .map((a, index, arr) => ((index + 1) % 5 === 0 && index !== arr.length - 1) ? a + ' ' : a)
     .join('')
 }

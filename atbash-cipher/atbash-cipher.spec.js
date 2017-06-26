@@ -13,12 +13,12 @@ describe('encode', () => {
 
   it('encodes long words', () => expect(atbash.encode('mindblowingly')).toEqual('nrmwy oldrm tob'))
 
-  xit('encodes numbers', () => expect(atbash.encode('Testing, 1 2 3, testing.'))
+  it('encodes numbers', () => expect(atbash.encode('Testing, 1 2 3, testing.'))
     .toEqual('gvhgr mt123 gvhgr mt'))
 
-  xit('encodes sentences', () => expect(atbash.encode('Truth is fiction.')).toEqual('gifgs rhurx grlm'))
+  it('encodes sentences', () => expect(atbash.encode('Truth is fiction.')).toEqual('gifgs rhurx grlm'))
 
-  xit('encodes all the things', () => expect(atbash.encode('The quick brown fox jumps over the lazy dog.'))
+  it('encodes all the things', () => expect(atbash.encode('The quick brown fox jumps over the lazy dog.'))
     .toEqual('gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt')
   )
 })
