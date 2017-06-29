@@ -17,6 +17,21 @@ class Crypto {
   plaintextSegments () {
     return strChunk(this.normalizePlaintext(), this.size())
   }
+
+  ciphertext () {
+    const rotated = []
+    const plaintextSegments = this.plaintextSegments()
+    plaintextSegments.forEach((segment, i) => {
+      segment.split('').forEach((item, j) => {
+        if (i === 0) {
+          rotated.push([item])
+        } else {
+          rotated[j].push(item)
+        }
+      })
+    })
+    return rotated.reduce((a, b) => a.concat(b), []).join('')
+  }
 }
 
 export default Crypto
