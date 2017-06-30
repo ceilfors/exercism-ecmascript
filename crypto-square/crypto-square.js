@@ -1,4 +1,17 @@
 const strChunk = (str, size) => str.match(new RegExp(`.{1,${size}}`, 'g'))
+const rotate2DArray = (array) => {
+  const rotated = []
+  array.forEach((row, i) => {
+    row.split('').forEach((column, j) => {
+      if (i === 0) {
+        rotated.push([column])
+      } else {
+        rotated[j].push(column)
+      }
+    })
+  })
+  return rotated
+}
 
 class Crypto {
   constructor (input) {
@@ -19,18 +32,7 @@ class Crypto {
   }
 
   ciphertext () {
-    const rotated = []
-    const plaintextSegments = this.plaintextSegments()
-    plaintextSegments.forEach((segment, i) => {
-      segment.split('').forEach((item, j) => {
-        if (i === 0) {
-          rotated.push([item])
-        } else {
-          rotated[j].push(item)
-        }
-      })
-    })
-    return rotated.reduce((a, b) => a.concat(b), []).join('')
+    return rotate2DArray(this.plaintextSegments()).reduce((a, b) => a.concat(b), []).join('')
   }
 }
 
