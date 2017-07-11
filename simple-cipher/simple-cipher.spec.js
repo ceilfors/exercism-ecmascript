@@ -66,12 +66,12 @@ describe('Substitution cipher', () => {
     expect(cipher.decode(cipher.encode('abcdefghij'))).toEqual('abcdefghij')
   })
 
-  xit(': double shift encode', () => {
+  it(': double shift encode', () => {
     expect(new Cipher('iamapandabear').encode('iamapandabear'))
       .toEqual('qayaeaagaciai')
   })
 
-  xit('can wrap', () => {
+  it('can wrap', () => {
     expect(cipher.encode('zzzzzzzzzz')).toEqual('zabcdefghi')
   })
 })
