@@ -22,4 +22,8 @@ export default class DiffieHellman {
     assert(privateKey < this.p, 'private key must be less than p')
     return this.g ** privateKey % this.p
   }
+
+  getSharedSecret (privateKey, publicKey) {
+    return publicKey ** privateKey % this.p
+  }
 }
