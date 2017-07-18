@@ -1,16 +1,18 @@
-const QU_REPLACEMENT = ';'
+const QU_CONSONANT_REPLACEMENT = ';:'
 
-const moveBackStartingConsonants = (input) => {
-  const string = input.replace(/qu/, QU_REPLACEMENT)
-  const firstVowelIndex = string.search(/[aeiuo]/)
-  const startingConsonants = string.substring(0, firstVowelIndex)
-  const remainingString = string.substring(firstVowelIndex, string.length)
-  const result = remainingString + startingConsonants
-  return result.replace(QU_REPLACEMENT, 'qu')
+const splitOnIndex = (string, index) => [string.substring(0, index), string.substring(index)]
+
+const findFirstVowelIndex = (input) => input.replace(/qu/, QU_CONSONANT_REPLACEMENT).search(/[aeiuo]/)
+
+const translateWord = (word) => {
+  const [consonantPrefix, remaining] = splitOnIndex(word, findFirstVowelIndex(word))
+  return `${remaining}${consonantPrefix}ay`
 }
 
 export default class PigLatin {
   translate (english) {
-    return moveBackStartingConsonants(english) + 'ay'
+    return english.split(' ')
+      .map(word => translateWord(word))
+      .join(' ')
   }
 }

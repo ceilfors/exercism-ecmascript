@@ -45,7 +45,7 @@ describe('Pig Latin', () => {
     expect(translator.translate('school')).toEqual('oolschay')
   })
 
-  xtest('translates a phrase', () => {
+  test('translates a phrase', () => {
     expect(translator.translate('quick fast run'))
       .toEqual('ickquay astfay unray')
   })
