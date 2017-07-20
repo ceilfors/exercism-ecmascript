@@ -19,7 +19,7 @@ describe('Triplet', () => {
     expect(new Triplet(5, 6, 7).isPythagorean()).toBe(false)
   })
 
-  xtest('can make triplets up to 10', () => {
+  it('can make triplets up to 10', () => {
     const triplets = Triplet.where({ maxFactor: 10 })
     const products = triplets.sort().map(triplet => triplet.product())
     expect(products).toEqual([60, 480])

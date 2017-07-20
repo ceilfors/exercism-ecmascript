@@ -17,7 +17,18 @@ export default class Triplet {
     return this.a ** 2 + this.b ** 2 === this.c ** 2
   }
 
-  // static where () {
-  //   return [new this(1, 2, 3)]
-  // }
+  static where ({maxFactor}) {
+    const triplets = []
+    for (let a = 0; a <= maxFactor; a++) {
+      for (let b = a + 1; b <= maxFactor; b++) {
+        for (let c = b + 1; c <= maxFactor; c++) {
+          const triplet = new this(a, b, c)
+          if (triplet.isPythagorean()) {
+            triplets.push(triplet)
+          }
+        }
+      }
+    }
+    return triplets
+  }
 }
