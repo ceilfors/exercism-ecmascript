@@ -10,28 +10,28 @@ describe('LinkedList', () => {
     expect(list.pop()).toBe(20)
     expect(list.pop()).toBe(10)
   })
-  xtest('extract elements from the beginning of the list with shift', () => {
+  test('extract elements from the beginning of the list with shift', () => {
     const list = new LinkedList()
     list.push(10)
     list.push(20)
     expect(list.shift()).toBe(10)
     expect(list.shift()).toBe(20)
   })
-  xtest('add/extract elements from the beginning of the list with unshift/shift', () => {
+  test('add/extract elements from the beginning of the list with unshift/shift', () => {
     const list = new LinkedList()
     list.unshift(10)
     list.unshift(20)
     expect(list.shift()).toBe(20)
     expect(list.shift()).toBe(10)
   })
-  xtest('unshift/pop', () => {
+  test('unshift/pop', () => {
     const list = new LinkedList()
     list.unshift(10)
     list.unshift(20)
     expect(list.pop()).toBe(10)
     expect(list.pop()).toBe(20)
   })
-  xtest('example', () => {
+  test('example', () => {
     const list = new LinkedList()
     list.push(10)
     list.push(20)
@@ -44,7 +44,7 @@ describe('LinkedList', () => {
     expect(list.pop()).toBe(50)
     expect(list.shift()).toBe(30)
   })
-  xtest('can count its elements', () => {
+  test('can count its elements', () => {
     const list = new LinkedList()
     expect(list.count()).toBe(0)
     list.push(10)
@@ -52,7 +52,7 @@ describe('LinkedList', () => {
     list.push(20)
     expect(list.count()).toBe(2)
   })
-  xtest('sets head/tail after popping last element', () => {
+  test('sets head/tail after popping last element', () => {
     const list = new LinkedList()
     list.push(10)
     list.pop()
@@ -60,7 +60,7 @@ describe('LinkedList', () => {
     expect(list.count()).toBe(1)
     expect(list.pop()).toBe(20)
   })
-  xtest('sets head/tail after shifting last element', () => {
+  test('sets head/tail after shifting last element', () => {
     const list = new LinkedList()
     list.unshift(10)
     list.shift()
