@@ -21,6 +21,7 @@ export default class LinkedList {
   setTail (node) {
     this.tail = node
     this.head = this.head ? this.head : node
+    // TODO: Figure out why don't we need this block?!
     if (node) {
       node.next = null
     } else {
@@ -68,5 +69,18 @@ export default class LinkedList {
     linkNodes(node, this.head)
     this.setHead(node)
     this._count++
+  }
+
+  delete (value) {
+    const node = this._find(this.head, value)
+    if (node) {
+      linkNodes(node.previous, node.next)
+      this._count--
+    }
+  }
+
+  _find (node, value) {
+    if (!node) return null
+    return node.value === value ? node : this._find(node.next, value)
   }
 }
