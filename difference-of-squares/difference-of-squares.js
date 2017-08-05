@@ -7,13 +7,13 @@ export default class Squares {
     const total = new Array(this.n).fill()
       .map((_, index) => index + 1)
       .reduce((acc, number) => acc + number, 0)
-    return Math.pow(total, 2)
+    return total ** 2
   }
 
   get sumOfSquares () {
     return new Array(this.n).fill()
       .map((_, index) => index + 1)
-      .map(number => Math.pow(number, 2))
+      .map(number => number ** 2)
       .reduce((acc, number) => acc + number, 0)
   }
 
